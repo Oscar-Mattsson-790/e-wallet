@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 241px;
+  height: 100%;
   width: 100%;
   background: linear-gradient(
       248.04deg,
@@ -45,9 +45,11 @@
   font-size: 23px;
   line-height: 32px;
   letter-spacing: 0.03em;
+  margin-top: 15px;
+  margin-bottom: 0;
 }
 
-.wrapper {
+.card-wrapper {
   display: flex;
   justify-content: center;
   height: 200px;
@@ -57,14 +59,17 @@
   display: flex;
   justify-content: space-between;
   text-align: start;
+  padding: 8px;
 }
 
 .container-name {
-  margin-right: 20px;
+  padding: 3px;
+  text-align: start;
 }
 
 .container-number {
-  margin-left: 20px;
+  padding: 3px;
+  text-align: end;
 }
 
 .card-informtion {
@@ -76,6 +81,7 @@
   color: rgba(0, 0, 0, 0.8);
   text-shadow: -0.5px -0.5px 0px rgba(255, 255, 255, 0.25),
     0.5px 0.5px 0px rgba(255, 255, 255, 0.5);
+  padding: 0;
 }
 
 .card-information-second {

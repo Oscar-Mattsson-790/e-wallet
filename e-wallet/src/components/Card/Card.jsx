@@ -10,7 +10,7 @@ export default function Card() {
         <img className="bitcoin" src={bitcoin} alt="bitcoin" />
       </div>
       <p className="card-numbers">1234 5678 9101 1123</p>
-      <div className="wrapper">
+      <div className="-card-wrapper">
         <div className="card-container">
           <div className="container-name">
             <p className="card-informtion">CARDHOLDER NAME</p>

@@ -1,9 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
+label {
+  font-family: "PT Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 13px;
+  text-align: start;
+  margin-top: 10px;
+}
+
 .addCard {
   width: 100%;
-  height: 600px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 20px;
 }
 
 .addCard-btn {
@@ -19,4 +32,41 @@
   line-height: 25px;
   background-color: black;
   color: white;
+  cursor: pointer;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.input-container-second {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  text-align: start;
+}
+
+.input-container-third {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-long {
+  height: 56px;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+}
+
+.input-short {
+  width: 100%;
+  height: 56px;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+  margin-top: 4px;
+  padding: 0;
+  margin: 0;
 }
