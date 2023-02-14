@@ -2,13 +2,19 @@ import Top from "../Top/Top";
 import Card from "../Card/Card";
 import "./AddCard.css";
 import CreditCardsData from "../../assets/creditcards.json";
-import { useState } from "react";
 
 export default function AddCard() {
   const cardData = CreditCardsData[4];
-  const [cardNumber, setCardNumber] = useState("");
-  const [cardHolderName, setCardHolderName] = useState("");
-  const [dates, setDates] = useState("");
+
+  const newCard = {
+    cardNumber: "",
+    cardHolderName: "",
+    valid: "",
+    ccv: "",
+    vendor: "",
+  };
+
+  console.log(newCard);
 
   return (
     <div className="addCard">
@@ -20,12 +26,20 @@ export default function AddCard() {
           className="input-long"
           placeholder="XXXX XXXX XXXX XXXX"
           type="number"
+          required
+          onChange={(event) => {
+            newCard.cardNumber = event.target.value;
+          }}
         />
         <label>CARDHOLDER NAME</label>
         <input
           className="input-long"
           placeholder="FIRST LASTNAME"
           type="text"
+          required
+          onChange={(event) => {
+            newCard.cardHolderName = event.target.value;
+          }}
         />
       </form>
 
@@ -35,7 +49,11 @@ export default function AddCard() {
           <input
             className="input-short"
             type="month"
+            required
             style={{ width: "100%" }}
+            onChange={(event) => {
+              newCard.valid = event.target.value;
+            }}
           />
         </div>
         <div>
@@ -44,14 +62,24 @@ export default function AddCard() {
             className="input-short"
             placeholder="CCV"
             type="number"
+            required
             style={{ width: "100%" }}
+            onChange={(event) => {
+              newCard.ccv = event.target.value;
+            }}
           />
         </div>
       </form>
 
       <form className="input-container-third">
         <label>VENDOR</label>
-        <select className="input-long">
+        <select
+          className="input-long"
+          required
+          onChange={(event) => {
+            newCard.vendor = event.target.value;
+          }}
+        >
           <option value=""></option>
           <option value="bitcoing inc">BITCOIN INC</option>
           <option value="ninja bank">NINJA BANK</option>
