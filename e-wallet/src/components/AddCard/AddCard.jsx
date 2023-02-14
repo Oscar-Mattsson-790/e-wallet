@@ -1,21 +1,27 @@
-import Card from "../Card/Card";
 import Top from "../Top/Top";
+import Card from "../Card/Card";
 import "./AddCard.css";
+import CreditCardsData from "../../assets/creditcards.json";
+import { useState } from "react";
 
 export default function AddCard() {
+  const cardData = CreditCardsData[4];
+  const [cardNumber, setCardNumber] = useState("");
+  const [cardHolderName, setCardHolderName] = useState("");
+  const [dates, setDates] = useState("");
+
   return (
     <div className="addCard">
       <Top />
-      <Card />
-
+      <Card cardData={cardData} />
       <form className="input-container">
-        <label>Card NUMBER</label>
+        <label>CARD NUMBER</label>
         <input
           className="input-long"
           placeholder="XXXX XXXX XXXX XXXX"
           type="number"
         />
-        <label>Card NUMBER</label>
+        <label>CARDHOLDER NAME</label>
         <input
           className="input-long"
           placeholder="FIRST LASTNAME"
