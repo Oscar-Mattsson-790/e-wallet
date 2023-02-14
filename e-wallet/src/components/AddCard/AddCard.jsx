@@ -6,7 +6,7 @@ export default function AddCard() {
   return (
     <div className="addCard">
       <Top />
-      <Card />
+      {/* <Card /> */}
 
       <form className="input-container">
         <label>Card NUMBER</label>

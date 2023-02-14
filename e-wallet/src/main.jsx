@@ -7,7 +7,7 @@ import AddCard from "./components/AddCard/AddCard";
 
 const router = createBrowserRouter([
   {
-    path: "/home",
+    path: "/",
     element: <App />,
   },
   {

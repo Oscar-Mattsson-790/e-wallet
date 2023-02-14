@@ -1,27 +1,29 @@
 import "./Card.css";
-import chipDark from "../../assets/chip-dark.svg";
-import bitcoin from "../../assets/vendor-bitcoin.svg";
 
-export default function Card() {
+export default function Card({ cardData }) {
   return (
-    <div className="card">
-      <div className="card-header">
-        <img className="chip" src={chipDark} alt="chip" />
-        <img className="bitcoin" src={bitcoin} alt="bitcoin" />
-      </div>
-      <p className="card-numbers">1234 5678 9101 1123</p>
-      <div className="-card-wrapper">
-        <div className="card-container">
-          <div className="container-name">
-            <p className="card-informtion">CARDHOLDER NAME</p>
-            <p className="card-information-second">OSCAR MATTSSON</p>
+    <>
+      {cardData && (
+        <div className="card" style={{ background: `${cardData.color}` }}>
+          <div className="card-header">
+            <img className="chip" src={cardData.chip} alt="chip" />
+            <img className="card-logo" src={cardData.logo} alt="card-logo" />
           </div>
-          <div className="container-number">
-            <p className="card-informtion">VALID THRU</p>
-            <p className="card-information-second">12/22</p>
+          <p className="card-numbers">{cardData.cardnumber}</p>
+          <div className="-card-wrapper">
+            <div className="card-container">
+              <div className="container-name">
+                <p className="card-informtion">CARDHOLDER NAME</p>
+                <p className="card-information-second">{cardData.name}</p>
+              </div>
+              <div className="container-number">
+                <p className="card-informtion">VALID THRU</p>
+                <p className="card-information-second">{cardData.valid}</p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
