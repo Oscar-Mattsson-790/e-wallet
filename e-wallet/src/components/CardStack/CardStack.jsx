@@ -10,8 +10,9 @@ export default function CardStack({ activeCard }) {
   return (
     <div className="cardStack">
       <div className="cardStack-container">
-        {nonActiveCards &&
-          nonActiveCards.map((card, key) => <Card key={key} />)}
+        {nonActiveCards.map((card, key) => (
+          <Card key={key} card={card} />
+        ))}
       </div>
     </div>
   );
