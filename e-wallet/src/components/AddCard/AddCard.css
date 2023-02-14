@@ -44,6 +44,7 @@ label {
 
 .input-container-second {
   display: flex;
+  justify-content: center;
   gap: 20px;
   width: 100%;
   text-align: start;
@@ -62,7 +63,6 @@ label {
 }
 
 .input-short {
-  width: 100%;
   height: 56px;
   border: 1px solid rgba(0, 0, 0, 0.8);
   border-radius: 8px;
