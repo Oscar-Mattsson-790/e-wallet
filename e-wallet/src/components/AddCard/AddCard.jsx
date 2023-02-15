@@ -3,20 +3,17 @@ import Card from "../Card/Card";
 import "./AddCard.css";
 import CreditCardsData from "../../assets/creditcards.json";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function AddCard() {
   const cardData = CreditCardsData[4];
-  const [cards, setCards] = useState([]);
-
-  const newCard = {
+  const [newCard, setNewCard] = useState({
     cardNumber: "",
     cardHolderName: "",
     valid: "",
     ccv: "",
     vendor: "",
-  };
-
-  console.log(newCard);
+  });
 
   function handleClick() {
     console.log(newCard);
@@ -37,8 +34,9 @@ export default function AddCard() {
           placeholder="XXXX XXXX XXXX XXXX"
           type="number"
           required
+          value={newCard.cardNumber}
           onChange={(event) => {
-            newCard.cardNumber = event.target.value;
+            setNewCard({ ...newCard, cardNumber: event.target.value });
           }}
         />
         <label>CARDHOLDER NAME</label>
@@ -47,8 +45,9 @@ export default function AddCard() {
           placeholder="FIRST LASTNAME"
           type="text"
           required
+          value={newCard.cardHolderName}
           onChange={(event) => {
-            newCard.cardHolderName = event.target.value;
+            setNewCard({ ...newCard, cardHolderName: event.target.value });
           }}
         />
       </form>
@@ -60,9 +59,10 @@ export default function AddCard() {
             className="input-short"
             type="month"
             required
+            value={newCard.valid}
             style={{ width: "100%" }}
             onChange={(event) => {
-              newCard.valid = event.target.value;
+              setNewCard({ ...newCard, valid: event.target.value });
             }}
           />
         </div>
@@ -73,9 +73,10 @@ export default function AddCard() {
             placeholder="CCV"
             type="number"
             required
+            value={newCard.ccv}
             style={{ width: "100%" }}
             onChange={(event) => {
-              newCard.ccv = event.target.value;
+              setNewCard({ ...newCard, ccv: event.target.value });
             }}
           />
         </div>
@@ -86,8 +87,9 @@ export default function AddCard() {
         <select
           className="input-long"
           required
+          value={newCard.vendor}
           onChange={(event) => {
-            newCard.vendor = event.target.value;
+            setNewCard({ ...newCard, vendor: event.target.value });
           }}
         >
           <option value=""></option>
