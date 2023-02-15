@@ -29,7 +29,7 @@
 .card-logo {
   position: absolute;
   right: 25px;
-  top: 25px;
+  top: 22px;
 }
 
 .card-numbers {
@@ -52,7 +52,7 @@
   display: flex;
   justify-content: space-between;
   text-align: start;
-  padding: 8px;
+  padding: 18px;
 }
 
 .container-name {

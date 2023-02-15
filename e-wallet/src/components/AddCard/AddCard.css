@@ -33,6 +33,7 @@ label {
   background-color: black;
   color: white;
   cursor: pointer;
+  margin-top: 20px;
 }
 
 .input-container {
@@ -40,6 +41,7 @@ label {
   flex-direction: column;
   gap: 5px;
   width: 100%;
+  margin-top: 20px;
 }
 
 .input-container-second {
