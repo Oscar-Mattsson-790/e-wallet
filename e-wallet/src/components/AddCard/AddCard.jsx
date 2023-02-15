@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function AddCard() {
   const cardData = CreditCardsData[4];
+  const [cards, setCards] = useState([]);
 
   const newCard = {
     cardNumber: "",
