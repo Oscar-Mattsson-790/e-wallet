@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 
+.top {
+  padding-top: 25px;
+  padding-bottom: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
 .top-header {
   font-family: "PT Mono";
   font-style: normal;
@@ -17,4 +24,6 @@
   font-size: 12px;
   line-height: 15px;
   color: rgba(34, 34, 34, 0.6);
+
+  margin-bottom: 0;
 }

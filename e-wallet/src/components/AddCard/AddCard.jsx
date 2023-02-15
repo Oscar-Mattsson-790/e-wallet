@@ -2,6 +2,7 @@ import Top from "../Top/Top";
 import Card from "../Card/Card";
 import "./AddCard.css";
 import CreditCardsData from "../../assets/creditcards.json";
+import { Link } from "react-router-dom";
 
 export default function AddCard() {
   const cardData = CreditCardsData[4];
@@ -16,9 +17,17 @@ export default function AddCard() {
 
   console.log(newCard);
 
+  function handleClick() {
+    console.log(newCard);
+  }
+
   return (
     <div className="addCard">
-      <Top />
+      <Top
+        title="ADD A NEW BANK CARD"
+        description="NEW CARD"
+        style={{ color: "red" }}
+      />
       <Card cardData={cardData} />
       <form className="input-container">
         <label>CARD NUMBER</label>
@@ -87,7 +96,11 @@ export default function AddCard() {
           <option value="evil corp">EVIL CORP</option>
         </select>
       </form>
-      <button className="addCard-btn">ADD CARD</button>
+      <Link to="/">
+        <button className="addCard-btn" onClick={handleClick}>
+          ADD CARD
+        </button>
+      </Link>
     </div>
   );
 }

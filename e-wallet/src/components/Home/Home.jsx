@@ -17,7 +17,7 @@ export default function Home() {
 
   return (
     <div className="home">
-      <Top />
+      <Top title="E-WALLET" description="ACTIVE CARD" />
       <Card cardData={activeCard} />
       <CardStack activeCard={activeCard} />
       <Link to="/addcard">
