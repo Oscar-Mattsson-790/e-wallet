@@ -4,11 +4,14 @@ import "./AddCard.css";
 import CreditCardsData from "../../assets/creditcards.json";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import blockchainLogo from "../../src/assets/vendor-blockchain.svg";
+import bitcoinLogo from "../../src/assets/vendor-bitcoin.svg";
+import ninjaLogo from "../../src/assets/vendor-ninja.svg";
+import evilCorpLogo from "../../src/assets/vendor-evilcorp.svg";
 
 export default function AddCard() {
   const cardData = CreditCardsData[4];
   const [addedCards, setAddedCards] = useState([]);
-
   const [addedCard, setAddedCard] = useState({
     id: 0,
     cardNumber: "",
@@ -21,8 +24,16 @@ export default function AddCard() {
     logo: "../../src/assets/vendor-blockchain.svg",
     chip: "../../src/assets/chip-light.svg",
   });
+  const vendorLogos = {
+    "block chain inc": blockchainLogo,
+    "bitcoing inc": bitcoinLogo,
+    "ninja bank": ninjaLogo,
+    "evil corp": evilCorpLogo,
+  };
 
   function handleClick() {
+    const logoUrl = vendorLogos[addedCard.vendor];
+    setAddedCard({ ...addedCard, logo: logoUrl });
     localStorage.setItem(
       "addedCards",
       JSON.stringify([...addedCards, addedCard])
@@ -31,6 +42,28 @@ export default function AddCard() {
       const storedCards = localStorage.getItem("addedCards");
       return storedCards ? JSON.parse(storedCards) : [];
     });
+  }
+
+  function handleKeyDown(event) {
+    const value = event.target.value;
+    if (
+      value.length >= 16 &&
+      event.key !== "Backspace" &&
+      event.key !== "Delete"
+    ) {
+      event.preventDefault();
+    }
+  }
+
+  function handleKeyDownCcv(event) {
+    const value = event.target.value;
+    if (
+      value.length >= 3 &&
+      event.key !== "Backspace" &&
+      event.key !== "Delete"
+    ) {
+      event.preventDefault();
+    }
   }
 
   return (
@@ -47,8 +80,10 @@ export default function AddCard() {
           className="input-long"
           placeholder="XXXX XXXX XXXX XXXX"
           type="number"
+          maxLength={16}
           required
           value={addedCard.cardNumber}
+          onKeyDown={handleKeyDown}
           onChange={(event) => {
             setAddedCard({ ...addedCard, cardNumber: event.target.value });
           }}
@@ -86,9 +121,11 @@ export default function AddCard() {
             className="input-short"
             placeholder="CCV"
             type="number"
+            max={3}
             required
             value={addedCard.ccv}
             style={{ width: "100%" }}
+            onKeyDown={handleKeyDownCcv}
             onChange={(event) => {
               setAddedCard({ ...addedCard, ccv: event.target.value });
             }}
@@ -107,10 +144,11 @@ export default function AddCard() {
           }}
         >
           <option value=""></option>
-          <option value="bitcoing inc">BITCOIN INC</option>
-          <option value="ninja bank">NINJA BANK</option>
-          <option value="block chain inc">BLOCK CHAIN INC</option>
-          <option value="evil corp">EVIL CORP</option>
+          {Object.keys(vendorLogos).map((vendor) => (
+            <option key={vendor} value={vendor}>
+              {vendor.toUpperCase()}
+            </option>
+          ))}
         </select>
       </form>
       <Link to="/">
