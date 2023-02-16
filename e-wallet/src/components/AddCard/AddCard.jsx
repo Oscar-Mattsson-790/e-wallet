@@ -7,26 +7,30 @@ import { useState } from "react";
 
 export default function AddCard() {
   const cardData = CreditCardsData[4];
-  const [addedCards, setAddedCards] = useState(() => {
-    const storedCards = localStorage.getItem("addedCards");
-    return storedCards ? JSON.parse(storedCards) : [];
-  });
+  const [addedCards, setAddedCards] = useState([]);
 
   const [addedCard, setAddedCard] = useState({
+    id: 0,
     cardNumber: "",
     cardHolderName: "",
     valid: "",
     ccv: "",
+    color:
+      "linear-gradient(248.52deg, rgba(0, 0, 0, 0.15) 1.49%, rgba(0, 0, 0, 0) 100%), #8B58F9",
     vendor: "",
+    logo: "../../src/assets/vendor-blockchain.svg",
+    chip: "../../src/assets/chip-light.svg",
   });
 
   function handleClick() {
-    setAddedCards((prevCards) => [...prevCards, addedCard]);
     localStorage.setItem(
       "addedCards",
       JSON.stringify([...addedCards, addedCard])
     );
-    console.log(addedCards);
+    setAddedCards(() => {
+      const storedCards = localStorage.getItem("addedCards");
+      return storedCards ? JSON.parse(storedCards) : [];
+    });
   }
 
   return (
@@ -109,11 +113,11 @@ export default function AddCard() {
           <option value="evil corp">EVIL CORP</option>
         </select>
       </form>
-      {/* <Link to="/"> */}
-      <button className="addCard-btn" onClick={handleClick}>
-        ADD CARD
-      </button>
-      {/* </Link> */}
+      <Link to="/">
+        <button className="addCard-btn" onClick={handleClick}>
+          ADD CARD
+        </button>
+      </Link>
     </div>
   );
 }

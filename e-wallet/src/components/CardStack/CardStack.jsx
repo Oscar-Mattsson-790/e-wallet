@@ -7,10 +7,15 @@ export default function CardStack({ activeCard, setActiveCard }) {
     return card?.id !== activeCard?.id && card?.id !== 5;
   });
 
+  const storedCards = JSON.parse(localStorage.getItem("addedCards"));
+  const nonActiveCardsWithStoredCards = [...nonActiveCards, ...storedCards];
+  console.log(nonActiveCardsWithStoredCards);
+  console.log(storedCards);
+
   return (
     <div className="cardStack">
       <div className="cardStack-container" style={{ color: "#FFFFFF" }}>
-        {nonActiveCards.map((card, key) => (
+        {nonActiveCardsWithStoredCards.map((card, key) => (
           <Card key={key} cardData={card} onClick={() => setActiveCard(card)} />
         ))}
       </div>
