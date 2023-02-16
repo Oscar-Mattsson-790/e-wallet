@@ -7,8 +7,12 @@ import { useState } from "react";
 
 export default function AddCard() {
   const cardData = CreditCardsData[4];
+  const [addedCards, setAddedCards] = useState(() => {
+    const storedCards = localStorage.getItem("addedCards");
+    return storedCards ? JSON.parse(storedCards) : [];
+  });
 
-  const [newCard, setNewCard] = useState({
+  const [addedCard, setAddedCard] = useState({
     cardNumber: "",
     cardHolderName: "",
     valid: "",
@@ -17,7 +21,12 @@ export default function AddCard() {
   });
 
   function handleClick() {
-    console.log(newCard);
+    setAddedCards((prevCards) => [...prevCards, addedCard]);
+    localStorage.setItem(
+      "addedCards",
+      JSON.stringify([...addedCards, addedCard])
+    );
+    console.log(addedCards);
   }
 
   return (
@@ -35,9 +44,9 @@ export default function AddCard() {
           placeholder="XXXX XXXX XXXX XXXX"
           type="number"
           required
-          value={newCard.cardNumber}
+          value={addedCard.cardNumber}
           onChange={(event) => {
-            setNewCard({ ...newCard, cardNumber: event.target.value });
+            setAddedCard({ ...addedCard, cardNumber: event.target.value });
           }}
         />
         <label>CARDHOLDER NAME</label>
@@ -46,9 +55,9 @@ export default function AddCard() {
           placeholder="FIRST LASTNAME"
           type="text"
           required
-          value={newCard.cardHolderName}
+          value={addedCard.cardHolderName}
           onChange={(event) => {
-            setNewCard({ ...newCard, cardHolderName: event.target.value });
+            setAddedCard({ ...addedCard, cardHolderName: event.target.value });
           }}
         />
       </form>
@@ -60,10 +69,10 @@ export default function AddCard() {
             className="input-short"
             type="month"
             required
-            value={newCard.valid}
+            value={addedCard.valid}
             style={{ width: "100%" }}
             onChange={(event) => {
-              setNewCard({ ...newCard, valid: event.target.value });
+              setAddedCard({ ...addedCard, valid: event.target.value });
             }}
           />
         </div>
@@ -74,10 +83,10 @@ export default function AddCard() {
             placeholder="CCV"
             type="number"
             required
-            value={newCard.ccv}
+            value={addedCard.ccv}
             style={{ width: "100%" }}
             onChange={(event) => {
-              setNewCard({ ...newCard, ccv: event.target.value });
+              setAddedCard({ ...addedCard, ccv: event.target.value });
             }}
           />
         </div>
@@ -88,9 +97,9 @@ export default function AddCard() {
         <select
           className="input-long"
           required
-          value={newCard.vendor}
+          value={addedCard.vendor}
           onChange={(event) => {
-            setNewCard({ ...newCard, vendor: event.target.value });
+            setAddedCard({ ...addedCard, vendor: event.target.value });
           }}
         >
           <option value=""></option>
@@ -100,11 +109,11 @@ export default function AddCard() {
           <option value="evil corp">EVIL CORP</option>
         </select>
       </form>
-      <Link to="/">
-        <button className="addCard-btn" onClick={handleClick}>
-          ADD CARD
-        </button>
-      </Link>
+      {/* <Link to="/"> */}
+      <button className="addCard-btn" onClick={handleClick}>
+        ADD CARD
+      </button>
+      {/* </Link> */}
     </div>
   );
 }

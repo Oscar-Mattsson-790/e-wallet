@@ -1,10 +1,14 @@
 import "./Card.css";
 
-export default function Card({ cardData }) {
+export default function Card({ cardData, onClick }) {
   return (
     <>
       {cardData && (
-        <div className="card" style={{ background: `${cardData.color}` }}>
+        <div
+          className="card"
+          onClick={onClick}
+          style={{ background: `${cardData.color}` }}
+        >
           <div className="card-header">
             <img className="chip" src={cardData.chip} alt="chip" />
             <img className="card-logo" src={cardData.logo} alt="card-logo" />

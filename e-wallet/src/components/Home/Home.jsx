@@ -19,7 +19,7 @@ export default function Home() {
     <div className="home">
       <Top title="E-WALLET" description="ACTIVE CARD" />
       <Card cardData={activeCard} />
-      <CardStack activeCard={activeCard} />
+      <CardStack activeCard={activeCard} setActiveCard={setActiveCard} />
       <Link to="/addcard">
         <button className="home-btn">ADD A NEW CARD</button>
       </Link>
