@@ -4,10 +4,6 @@ import "./AddCard.css";
 import CreditCardsData from "../../assets/creditcards.json";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import blockchainLogo from "../../src/assets/vendor-blockchain.svg";
-import bitcoinLogo from "../../src/assets/vendor-bitcoin.svg";
-import ninjaLogo from "../../src/assets/vendor-ninja.svg";
-import evilCorpLogo from "../../src/assets/vendor-evilcorp.svg";
 
 export default function AddCard() {
   const cardData = CreditCardsData[4];
@@ -19,21 +15,13 @@ export default function AddCard() {
     valid: "",
     ccv: "",
     color:
-      "linear-gradient(248.52deg, rgba(0, 0, 0, 0.15) 1.49%, rgba(0, 0, 0, 0) 100%), #8B58F9",
+      "linear-gradient(248.3deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%), #D0D0D0",
     vendor: "",
     logo: "../../src/assets/vendor-blockchain.svg",
     chip: "../../src/assets/chip-light.svg",
   });
-  const vendorLogos = {
-    "block chain inc": blockchainLogo,
-    "bitcoing inc": bitcoinLogo,
-    "ninja bank": ninjaLogo,
-    "evil corp": evilCorpLogo,
-  };
 
   function handleClick() {
-    const logoUrl = vendorLogos[addedCard.vendor];
-    setAddedCard({ ...addedCard, logo: logoUrl });
     localStorage.setItem(
       "addedCards",
       JSON.stringify([...addedCards, addedCard])
@@ -144,11 +132,10 @@ export default function AddCard() {
           }}
         >
           <option value=""></option>
-          {Object.keys(vendorLogos).map((vendor) => (
-            <option key={vendor} value={vendor}>
-              {vendor.toUpperCase()}
-            </option>
-          ))}
+          <option value="bitcoing inc">BITCOIN INC</option>
+          <option value="ninja bank">NINJA BANK</option>
+          <option value="block chain inc">BLOCK CHAIN INC</option>
+          <option value="evil corp">EVIL CORP</option>
         </select>
       </form>
       <Link to="/">

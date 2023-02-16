@@ -8,9 +8,10 @@ export default function CardStack({ activeCard, setActiveCard }) {
   });
 
   const storedCards = JSON.parse(localStorage.getItem("addedCards"));
-  const nonActiveCardsWithStoredCards = [...nonActiveCards, ...storedCards];
-  console.log(nonActiveCardsWithStoredCards);
-  console.log(storedCards);
+  const nonActiveCardsWithStoredCards = [
+    ...nonActiveCards,
+    ...(Array.isArray(storedCards) ? storedCards : []),
+  ];
 
   return (
     <div className="cardStack">
