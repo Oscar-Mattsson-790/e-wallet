@@ -7,6 +7,7 @@ import { useState } from "react";
 
 export default function AddCard() {
   const cardData = CreditCardsData[4];
+
   const [newCard, setNewCard] = useState({
     cardNumber: "",
     cardHolderName: "",
