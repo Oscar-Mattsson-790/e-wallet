@@ -8,7 +8,7 @@
     "color": "linear-gradient(248.04deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 99.07%), #FFAE34",
     "logo": "../../src/assets/vendor-bitcoin.svg",
     "chip": "../../src/assets/chip-dark.svg",
-    "vendor": ""
+    "vendor": "Bitcoin inc"
   },
   {
     "id": 2,
@@ -19,7 +19,7 @@
     "color": "linear-gradient(248.3deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%), #222222",
     "logo": "../../src/assets/vendor-ninja.svg",
     "chip": "../../src/assets/chip-light.svg",
-    "vendor": ""
+    "vendor": "Ninja bank"
   },
   {
     "id": 3,
@@ -30,7 +30,7 @@
     "color": "linear-gradient(248.52deg, rgba(0, 0, 0, 0.15) 1.49%, rgba(0, 0, 0, 0) 100%), #8B58F9",
     "logo": "../../src/assets/vendor-blockchain.svg",
     "chip": "../../src/assets/chip-light.svg",
-    "vendor": ""
+    "vendor": "Block chain inc"
   },
   {
     "id": 4,
@@ -41,7 +41,7 @@
     "color": "linear-gradient(248.3deg, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0) 100%), #F33355",
     "logo": "../../src/assets/vendor-evil.svg",
     "chip": "../../src/assets/chip-light.svg",
-    "vendor": ""
+    "vendor": "Evil corp"
   },
   {
     "id": 5,
@@ -51,6 +51,7 @@
     "ccv": "",
     "color": "linear-gradient(248.3deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%), #D0D0D0",
     "logo": "../../src/assets/vendor-bitcoin.svg",
-    "chip": "../../src/assets/chip-dark.svg"
+    "chip": "../../src/assets/chip-dark.svg",
+    "vendor": ""
   }
 ]

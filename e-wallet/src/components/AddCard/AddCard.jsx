@@ -2,34 +2,52 @@ import Top from "../Top/Top";
 import Card from "../Card/Card";
 import "./AddCard.css";
 import CreditCardsData from "../../assets/creditcards.json";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function AddCard() {
+  const navigate = useNavigate();
   const cardData = CreditCardsData[4];
-  const [addedCards, setAddedCards] = useState([]);
+  const [addedCardsArray, setAddedCardsArray] = useState([]);
   const [addedCard, setAddedCard] = useState({
-    id: 0,
+    id: "",
     cardNumber: "",
     cardHolderName: "",
     valid: "",
     ccv: "",
-    color:
-      "linear-gradient(248.3deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%), #D0D0D0",
+    color: "",
+    logo: "",
+    chip: "",
     vendor: "",
-    logo: "../../src/assets/vendor-blockchain.svg",
-    chip: "../../src/assets/chip-light.svg",
   });
 
   function handleClick() {
+    const matchinCardData = CreditCardsData.filter(
+      (card) => card.vendor === addedCard.vendor
+    );
+
+    console.log("matching card: ", matchinCardData);
+    if (matchinCardData.length > 0) {
+      setAddedCard({
+        ...addedCard,
+        id: matchinCardData[0].id,
+        color: matchinCardData[0].color,
+        logo: matchinCardData[0].logo,
+        chip: matchinCardData[0].chip,
+        vendor: matchinCardData[0].vendor,
+      });
+    }
     localStorage.setItem(
       "addedCards",
-      JSON.stringify([...addedCards, addedCard])
+      JSON.stringify([...addedCardsArray, addedCard])
     );
-    setAddedCards(() => {
+
+    setAddedCardsArray(() => {
       const storedCards = localStorage.getItem("addedCards");
-      return storedCards ? JSON.parse(storedCards) : [];
+      return storedCards ? [...JSON.parse(storedCards)] : [];
     });
+
+    navigate("/");
   }
 
   function handleKeyDown(event) {
@@ -132,17 +150,15 @@ export default function AddCard() {
           }}
         >
           <option value=""></option>
-          <option value="bitcoing inc">BITCOIN INC</option>
-          <option value="ninja bank">NINJA BANK</option>
-          <option value="block chain inc">BLOCK CHAIN INC</option>
-          <option value="evil corp">EVIL CORP</option>
+          <option value="Bitcoing inc">BITCOIN INC</option>
+          <option value="Ninja bank">NINJA BANK</option>
+          <option value="Block chain inc">BLOCK CHAIN INC</option>
+          <option value="Evil corp">EVIL CORP</option>
         </select>
       </form>
-      <Link to="/">
-        <button className="addCard-btn" onClick={handleClick}>
-          ADD CARD
-        </button>
-      </Link>
+      <button className="addCard-btn" onClick={handleClick}>
+        ADD CARD
+      </button>
     </div>
   );
 }
