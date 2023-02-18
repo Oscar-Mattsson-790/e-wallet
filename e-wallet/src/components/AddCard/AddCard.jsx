@@ -15,9 +15,10 @@ export default function AddCard() {
     cardHolderName: "",
     valid: "",
     ccv: "",
-    color: "",
-    logo: "",
-    chip: "",
+    color:
+      "linear-gradient(248.3deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%), #D0D0D0",
+    logo: "../../src/assets/vendor-bitcoin.svg",
+    chip: "../../src/assets/chip-dark.svg",
     vendor: "",
   });
 
@@ -26,7 +27,7 @@ export default function AddCard() {
       (card) => card.vendor === addedCard.vendor
     );
 
-    console.log("matching card: ", matchinCardData);
+    // console.log("matching card: ", matchinCardData);
     if (matchinCardData.length > 0) {
       setAddedCard({
         ...addedCard,
