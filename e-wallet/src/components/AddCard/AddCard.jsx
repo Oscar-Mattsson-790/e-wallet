@@ -23,21 +23,22 @@ export default function AddCard() {
   });
 
   function handleClick() {
-    const matchinCardData = CreditCardsData.filter(
+    const matchingCardData = CreditCardsData.filter(
       (card) => card.vendor === addedCard.vendor
     );
 
-    // console.log("matching card: ", matchinCardData);
-    if (matchinCardData.length > 0) {
+    console.log("matching card: ", matchingCardData);
+    if (matchingCardData.length > 0) {
       setAddedCard({
         ...addedCard,
-        id: matchinCardData[0].id,
-        color: matchinCardData[0].color,
-        logo: matchinCardData[0].logo,
-        chip: matchinCardData[0].chip,
-        vendor: matchinCardData[0].vendor,
+        id: matchingCardData[0].id,
+        color: matchingCardData[0].color,
+        logo: matchingCardData[0].logo,
+        chip: matchingCardData[0].chip,
+        vendor: matchingCardData[0].vendor,
       });
     }
+
     localStorage.setItem(
       "addedCards",
       JSON.stringify([...addedCardsArray, addedCard])
@@ -151,10 +152,10 @@ export default function AddCard() {
           }}
         >
           <option value=""></option>
-          <option value="Bitcoing inc">BITCOIN INC</option>
-          <option value="Ninja bank">NINJA BANK</option>
-          <option value="Block chain inc">BLOCK CHAIN INC</option>
-          <option value="Evil corp">EVIL CORP</option>
+          <option value="Bitcoin inc">Bitcoin inc</option>
+          <option value="Ninja bank">Ninja bank</option>
+          <option value="Block chain inc">Block chan inc</option>
+          <option value="Evil corp">Evil corp</option>
         </select>
       </form>
       <button className="addCard-btn" onClick={handleClick}>
