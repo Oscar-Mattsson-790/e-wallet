@@ -2,7 +2,7 @@ import Top from "../Top/Top";
 import Card from "../Card/Card";
 import "./AddCard.css";
 import CreditCardsData from "../../assets/creditcards.json";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function AddCard() {
@@ -15,16 +15,21 @@ export default function AddCard() {
     cardHolderName: "",
     valid: "",
     ccv: "",
-    color:
-      "linear-gradient(248.3deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%), #D0D0D0",
-    logo: "../../src/assets/vendor-bitcoin.svg",
-    chip: "../../src/assets/chip-dark.svg",
+    color: "",
+    logo: "",
+    chip: "",
     vendor: "",
   });
 
+  // linear-gradient(248.3deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%), #D0D0D0
+  // ../../src/assets/vendor-bitcoin.svg
+  // ../../src/assets/chip-dark.svg
+
   function handleClick() {
+    console.log(CreditCardsData);
+    console.log(addedCard);
     const matchingCardData = CreditCardsData.filter(
-      (card) => card.vendor === addedCard.vendor
+      (card) => card.vendor.toLowerCase() === addedCard.vendor.toLowerCase()
     );
 
     console.log("matching card: ", matchingCardData);
@@ -39,18 +44,31 @@ export default function AddCard() {
       });
     }
 
-    localStorage.setItem(
-      "addedCards",
-      JSON.stringify([...addedCardsArray, addedCard])
-    );
+    const storedCards = localStorage.getItem("addedCards");
+    const updatedCards = storedCards
+      ? [...JSON.parse(storedCards), addedCard]
+      : [addedCard];
+    localStorage.setItem("addedCards", JSON.stringify(updatedCards));
+    setAddedCardsArray(updatedCards);
 
-    setAddedCardsArray(() => {
-      const storedCards = localStorage.getItem("addedCards");
-      return storedCards ? [...JSON.parse(storedCards)] : [];
-    });
+    ////////////////////////////////////////////////
 
-    navigate("/");
+    // setAddedCardsArray(() => {
+    //   const storedCards = localStorage.getItem("addedCards");
+    //   return storedCards ? [...JSON.parse(storedCards)] : [];
+    // });
+
+    // localStorage.setItem(
+    //   "addedCards",
+    //   JSON.stringify([...addedCardsArray, addedCard])
+    // );
   }
+
+  useEffect(() => {
+    if (addedCard.id !== "") {
+      navigate("/");
+    }
+  }, [addedCard.id, navigate]);
 
   function handleKeyDown(event) {
     const value = event.target.value;
