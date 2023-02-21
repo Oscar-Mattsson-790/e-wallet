@@ -21,47 +21,29 @@ export default function AddCard() {
     vendor: "",
   });
 
-  // linear-gradient(248.3deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%), #D0D0D0
-  // ../../src/assets/vendor-bitcoin.svg
-  // ../../src/assets/chip-dark.svg
-
   function handleClick() {
-    console.log(CreditCardsData);
-    console.log(addedCard);
     const matchingCardData = CreditCardsData.filter(
       (card) => card.vendor.toLowerCase() === addedCard.vendor.toLowerCase()
     );
 
-    console.log("matching card: ", matchingCardData);
     if (matchingCardData.length > 0) {
-      setAddedCard({
+      const newCard = {
         ...addedCard,
         id: matchingCardData[0].id,
         color: matchingCardData[0].color,
         logo: matchingCardData[0].logo,
         chip: matchingCardData[0].chip,
         vendor: matchingCardData[0].vendor,
-      });
+      };
+
+      setAddedCard(newCard);
+      const storedCards = localStorage.getItem("addedCards");
+      const updatedCards = storedCards
+        ? [...JSON.parse(storedCards), newCard]
+        : [newCard];
+      localStorage.setItem("addedCards", JSON.stringify(updatedCards));
+      setAddedCardsArray(updatedCards);
     }
-
-    const storedCards = localStorage.getItem("addedCards");
-    const updatedCards = storedCards
-      ? [...JSON.parse(storedCards), addedCard]
-      : [addedCard];
-    localStorage.setItem("addedCards", JSON.stringify(updatedCards));
-    setAddedCardsArray(updatedCards);
-
-    ////////////////////////////////////////////////
-
-    // setAddedCardsArray(() => {
-    //   const storedCards = localStorage.getItem("addedCards");
-    //   return storedCards ? [...JSON.parse(storedCards)] : [];
-    // });
-
-    // localStorage.setItem(
-    //   "addedCards",
-    //   JSON.stringify([...addedCardsArray, addedCard])
-    // );
   }
 
   useEffect(() => {

@@ -1,6 +1,22 @@
 import "./Card.css";
 
 export default function Card({ cardData, onClick }) {
+  const format = (cardNumber) => {
+    return (
+      cardNumber.substring(0, 4) +
+      " " +
+      cardNumber.substring(4, 8) +
+      " " +
+      cardNumber.substring(8, 12) +
+      " " +
+      cardNumber.substring(12, 16)
+    );
+  };
+
+  const formatValid = (valid) => {
+    return valid.slice(2, 4) + "/" + valid.slice(0, 2);
+  };
+
   return (
     <>
       {cardData && (
@@ -13,7 +29,7 @@ export default function Card({ cardData, onClick }) {
             <img className="chip" src={cardData.chip} alt="chip" />
             <img className="card-logo" src={cardData.logo} alt="card-logo" />
           </div>
-          <p className="card-numbers">{cardData.cardNumber}</p>
+          <p className="card-numbers">{format(cardData.cardNumber)}</p>
           <div className="-card-wrapper">
             <div className="card-container">
               <div className="container-name">
@@ -24,7 +40,9 @@ export default function Card({ cardData, onClick }) {
               </div>
               <div className="container-number">
                 <p className="card-informtion">VALID THRU</p>
-                <p className="card-information-second">{cardData.valid}</p>
+                <p className="card-information-second">
+                  {formatValid(cardData.valid)}
+                </p>
               </div>
             </div>
           </div>
