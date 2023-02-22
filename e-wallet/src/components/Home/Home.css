@@ -25,6 +25,18 @@
   cursor: pointer;
 }
 
+.remove-btn {
+  height: 30px;
+  width: 100%;
+  font-style: normal;
+  font-weight: 700;
+  font-family: "PT Mono";
+  color: #000000;
+  background-color: #ffff;
+  border: 1px solid #000000;
+  border-radius: 5px;
+}
+
 @media only screen and (min-width: 600px) {
   body {
     width: 400px;

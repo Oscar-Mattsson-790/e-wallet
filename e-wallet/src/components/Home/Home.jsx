@@ -15,10 +15,27 @@ export default function Home() {
     }
   }, []);
 
+  const handleRemoveCard = (cardId) => {
+    const storedCards = JSON.parse(localStorage.getItem("addedCards"));
+    const updatedCards = storedCards.filter((card) => card.id !== cardId);
+
+    localStorage.setItem("addedCards", JSON.stringify(updatedCards));
+
+    if (activeCard && activeCard.id === cardId) {
+      setActiveCard(CreditCardsData[0]);
+    }
+  };
+
   return (
     <div className="home">
       <Top title="E-WALLET" description="ACTIVE CARD" />
       <Card cardData={activeCard} />
+      <button
+        className="remove-btn"
+        onClick={() => handleRemoveCard(activeCard.id)}
+      >
+        REMOVE CARD
+      </button>
       <CardStack activeCard={activeCard} setActiveCard={setActiveCard} />
       <Link to="/addcard">
         <button className="home-btn">ADD A NEW CARD</button>
