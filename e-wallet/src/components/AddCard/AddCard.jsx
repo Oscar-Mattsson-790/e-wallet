@@ -99,12 +99,15 @@ export default function AddCard() {
         <label>CARDHOLDER NAME</label>
         <input
           className="input-long"
-          placeholder="FIRST LASTNAME"
+          placeholder="FIRSTNAME LASTNAME"
           type="text"
           required
           value={addedCard.cardHolderName}
           onChange={(event) => {
-            setAddedCard({ ...addedCard, cardHolderName: event.target.value });
+            setAddedCard({
+              ...addedCard,
+              cardHolderName: event.target.value.toUpperCase(),
+            });
           }}
         />
       </form>
@@ -118,7 +121,7 @@ export default function AddCard() {
             placeholder="MM/YY"
             required
             value={addedCard.valid}
-            style={{ width: "100%" }}
+            style={{ width: "80%" }}
             onChange={(event) => {
               const input = event.target.value
                 .replace(/[^0-9]/g, "")
