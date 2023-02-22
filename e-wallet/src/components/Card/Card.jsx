@@ -13,9 +13,9 @@ export default function Card({ cardData, onClick }) {
     );
   };
 
-  const formatValid = (valid) => {
-    return valid.slice(2, 4) + "/" + valid.slice(0, 2);
-  };
+  // const formatValid = (valid) => {
+  //   return valid.slice(2, 4) + "/" + valid.slice(0, 2);
+  // };
 
   return (
     <>
@@ -40,9 +40,7 @@ export default function Card({ cardData, onClick }) {
               </div>
               <div className="container-number">
                 <p className="card-informtion">VALID THRU</p>
-                <p className="card-information-second">
-                  {formatValid(cardData.valid)}
-                </p>
+                <p className="card-information-second">{cardData.valid}</p>
               </div>
             </div>
           </div>

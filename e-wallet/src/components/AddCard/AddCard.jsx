@@ -114,12 +114,19 @@ export default function AddCard() {
           <label>VALID THRU</label>
           <input
             className="input-short"
-            type="month"
+            type="text"
+            placeholder="MM/YY"
             required
             value={addedCard.valid}
             style={{ width: "100%" }}
             onChange={(event) => {
-              setAddedCard({ ...addedCard, valid: event.target.value });
+              const input = event.target.value
+                .replace(/[^0-9]/g, "")
+                .slice(0, 4);
+              const year = input.slice(0, 2);
+              const month = input.slice(2, 4);
+              const formatted = `${year}/${month}`;
+              setAddedCard({ ...addedCard, valid: formatted });
             }}
           />
         </div>
