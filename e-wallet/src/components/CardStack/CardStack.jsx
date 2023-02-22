@@ -8,6 +8,7 @@ export default function CardStack({ activeCard, setActiveCard }) {
   });
 
   const storedCards = JSON.parse(localStorage.getItem("addedCards"));
+
   const nonActiveCardsWithStoredCards = [
     ...nonActiveCards,
     ...(Array.isArray(storedCards) ? storedCards : []),
