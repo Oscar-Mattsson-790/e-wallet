@@ -7,7 +7,6 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
-  cursor: pointer;
 }
 
 .home-btn {
@@ -35,6 +34,7 @@
   background-color: #ffff;
   border: 1px solid #000000;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 600px) {
